@@ -1,0 +1,184 @@
+.team-values-section {
+    padding: 100px 0;
+    background-color: #e7e6e6;
+  }
+  
+  .values-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .values-header {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .values-title {
+    font-size: 2.5rem;
+    color: #2a3c73;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .values-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 700px;
+    margin: 0 auto 30px;
+  }
+  
+  .values-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+  
+  .values-tab {
+    background: none;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #f0f0f0;
+  }
+  
+  .values-tab.active {
+    background-color: #2a3c73;
+    color: white;
+  }
+  
+  .values-tab:hover:not(.active) {
+    background-color: #e0e0e0;
+  }
+  
+  .values-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .value-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px 30px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+  }
+  
+  .value-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  
+  .value-card.approach {
+    border-top: 4px solid #2a3c73;
+  }
+  
+  .value-card.character {
+    border-top: 4px solid #4a90e2;
+  }
+  
+  .value-icon-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    background-color: #f8f8f8;
+  }
+  
+  .approach .value-icon-container {
+    background-color: rgba(42, 60, 115, 0.1);
+  }
+  
+  .character .value-icon-container {
+    background-color: rgba(74, 144, 226, 0.1);
+  }
+  
+  .value-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .approach-icon {
+    color: #2a3c73;
+  }
+  
+  .character-icon {
+    color: #4a90e2;
+  }
+  
+  .value-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .value-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .value-description {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+  
+  /* Responzivní design */
+  @media (max-width: 992px) {
+    .values-cards {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .team-values-section {
+      padding: 70px 0;
+    }
+    
+    .values-title {
+      font-size: 2rem;
+    }
+    
+    .values-subtitle {
+      font-size: 1rem;
+    }
+    
+    .values-tabs {
+      flex-wrap: wrap;
+    }
+    
+    .values-tab {
+      margin: 5px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .values-cards {
+      grid-template-columns: 1fr;
+    }
+    
+    .values-title {
+      font-size: 1.8rem;
+    }
+    
+    .value-title {
+      font-size: 1.3rem;
+    }
+  }

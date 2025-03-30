@@ -1,24 +1,15 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import About from './sections/About'
-import Hero from './sections/Hero'
-import Services from './sections/Services'
-import TeamValues from './sections/TeamValues'
-import WorkFlow from './sections/WorkFlow'
+import Home from './pages/Home'
+import TaxAccounting from './pages/TaxAccounting'
 
 function App() {
 
   return ( 
-    <>
-    <Header />
-    <Hero />
-    <About />
-    <Services />
-    <WorkFlow />
-    <TeamValues />
-    <Footer />
-    </>
+    <Routes>
+      <Route path='/' element={<Home />}/>
+      <Route path='/tax-accounting' element={<TaxAccounting />}/>
+    </Routes>
     )
 }
 

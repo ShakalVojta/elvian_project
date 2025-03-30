@@ -1,0 +1,138 @@
+.footer {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 60px 0 30px;
+    position: relative;
+  }
+  
+  .footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../../assets/footer/footer-map.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    z-index: 0;
+  }
+  
+  .footer-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-columns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+  }
+  
+  .footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+  }
+  
+  .footer-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #fff;
+  }
+  
+  .footer-subtitle {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .footer-contact-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-label {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 5px;
+  }
+  
+  .contact-value {
+    font-size: 1.1rem;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-value:hover {
+    color: #4a90e2;
+  }
+  
+  .footer-social {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .social-link:hover {
+    background-color: #0077b5;
+    transform: translateY(-3px);
+  }
+  
+  .footer-address p {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #eee;
+  }
+  
+  .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    text-align: center;
+  }
+  
+  .copyright {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+  
+  @media (max-width: 768px) {
+    .footer {
+      padding: 40px 0 20px;
+    }
+    
+    .footer-columns {
+      flex-direction: column;
+      gap: 40px;
+    }
+    
+    .footer-column {
+      width: 100%;
+    }
+  }
