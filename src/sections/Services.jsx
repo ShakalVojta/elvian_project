@@ -34,8 +34,8 @@ const Services = () => {
     },
     {
       id: 5,
-      title: "Consultancy",
-      description: "Podělíme se s vámi o dlouholeté zkušenosti z realizace různých projektů. Pomůžeme s analýzou, designem a řízením vývojového procesu.",
+      title: "Payroll",
+      description: "Poskytujeme kompletní outsourcing a automatizaci mzdového účetnictví. S našimi chytrými řešeními šetříte čas, náklady a eliminujete chyby.",
       image: Consultancy
     },
     {

@@ -14,10 +14,9 @@ const HeroSection = () => {
     <section className="hero-section" style={{ backgroundImage: `url(${HeroImage})` }} id='hero'>
       <div className="hero-overlay"></div>
       <div className="hero-content">
-        <h1 className="hero-title">Profesionální IT služby a řešení pro váš byznys</h1>
+        <h1 className="hero-title">Automatizace mezd, dodávky Nokia technologií a komplexní IT řešení.</h1>
         <p className="hero-subtitle">
-          Od IT managementu a vývoje aplikací až po biometrické systémy a mzdové účetnictví. 
-          S našimi komplexními službami získáte spolehlivého partnera pro růst vašeho podnikání.
+        Díky vlastním inovativním produktům a silnému partnerství s Nokií efektivně digitalizujeme firmy, modernizujeme jejich infrastrukturu a podporujeme dlouhodobý růst.
         </p>
         <div className="hero-buttons">
           <button 
