@@ -5,6 +5,7 @@ import Logo from '../assets/logo/logo_elvian.png';
 import { Icon } from '@mdi/react';
 import { mdiArrowUp, mdiCellphoneLink, mdiNetworkOutline, mdiServerNetwork, mdiSwapHorizontal, mdiDatabase } from '@mdi/js';
 import '../styles/pages/NokiaPage.css';
+import imageSrc from '../assets/nokia-page/nokia-page.webp';
 
 const NokiaPage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,6 +33,10 @@ const NokiaPage = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -132,15 +137,18 @@ const NokiaPage = () => {
         </section>
         
         <section className="nokia-about" id="nokia-about">
-          <div className="nokia-container">
-            <div className="nokia-about-content">
               <h2>V čem je Nokia skvělá a co to je za firmu?</h2>
+          <div className="nokia-container flex-layout">
+            <div className="nokia-about-content">
               <p>Nokia je globální leader v oblasti telekomunikačních technologií a síťových řešení, který již desítky let posouvá hranice inovací. Tato finská společnost, založená v roce 1865, se vypracovala z výrobce papíru na jednoho z nejvýznamnějších hráčů v digitálním světě.</p>
               
               <p>Dnes je Nokia synonymem pro špičkové technologie, které propojují lidi, stroje a zařízení po celém světě. Její síla spočívá v kombinaci pokročilých technologií, jako je 5G, optické sítě a datová centra, s důrazem na spolehlivost, bezpečnost a udržitelnost.</p>
               
               <p>Nokia pomáhá operátorům, podnikům i veřejnému sektoru zvyšovat produktivitu a připravovat se na budoucnost díky svému širokému portfoliu produktů a služeb.</p>
             </div>
+          <div className="nokia-product-image">
+        <img src={imageSrc} alt={`Produkt`} loading="lazy" />
+      </div>
           </div>
         </section>
         

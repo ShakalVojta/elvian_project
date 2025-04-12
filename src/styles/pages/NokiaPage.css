@@ -1,455 +1,734 @@
 .nokia-header {
-    background-color: #124191;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+  background-color: #124191;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nokia-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
+}
+
+.nokia-logo img {
+  width: 160px;
+  height: auto;
+}
+
+.nokia-desktop-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nokia-nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.nokia-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease;
+}
+
+.nokia-nav-link:hover {
+  color: #f0f0f0;
+}
+
+.nokia-nav-link:hover::after {
+  width: 100%;
+}
+
+.nokia-menu-button {
+  display: none;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.nokia-menu-button:hover {
+  transform: scale(1.05);
+}
+
+.nokia-menu-text {
+  margin-right: 10px;
+}
+
+.nokia-hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.nokia-hamburger-line {
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nokia-menu-button:hover .nokia-hamburger-line:first-child {
+  transform: translateY(1px);
+}
+
+.nokia-menu-button:hover .nokia-hamburger-line:last-child {
+  transform: translateY(-1px);
+}
+
+.nokia-mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #124191;
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.nokia-mobile-menu.active {
+  transform: translateX(0);
+}
+
+.nokia-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.nokia-close-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: transform 0.2s ease;
+}
+
+.nokia-close-button:hover {
+  transform: scale(1.05);
+}
+
+.nokia-close-text {
+  margin-right: 10px;
+}
+
+.nokia-close-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.nokia-close-icon::before,
+.nokia-close-icon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  top: 50%;
+  left: 0;
+  transition: background-color 0.3s ease;
+}
+
+.nokia-close-icon::before {
+  transform: rotate(45deg);
+}
+
+.nokia-close-icon::after {
+  transform: rotate(-45deg);
+}
+
+.nokia-close-button:hover .nokia-close-icon::before,
+.nokia-close-button:hover .nokia-close-icon::after {
+  background-color: #f0f0f0;
+}
+
+.nokia-menu-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nokia-menu-item {
+  color: white;
+  text-decoration: none;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.2rem;
+  transition: padding-left 0.3s ease, background-color 0.3s ease;
+}
+
+.nokia-menu-item:hover {
+  padding-left: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nokia-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.nokia-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nokia-scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #124191;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s ease;
+  z-index: 99;
+}
+
+.nokia-scroll-top:hover {
+  background-color: #0f3679;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nokia-page {
+  padding-top: 80px;
+}
+
+.nokia-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.flex-layout {
+  display: flex;
+  align-items: stretch;
+  gap: 20px;
+}
+
+.nokia-product-image,
+.nokia-product-text {
+  flex: 0 0 50%;
+}
+
+.nokia-product-image img {
+  width: 100%;
+  height: auto; 
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .flex-layout {
+    flex-direction: column;
   }
   
-  .nokia-header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0.8rem 2rem;
+  .nokia-product-image,
+  .nokia-product-text {
+    flex: 0 0 100%;
   }
-  
-  .nokia-logo img {
-    width: 160px;
-    height: auto;
+}
+
+
+.nokia-hero {
+  background-color: #00a0e6;
+  background-image: linear-gradient(135deg, #00a0e6 0%, #124191 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.nokia-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://www.nokia.com/sites/default/files/styles/scale_1440_no_crop/public/2023-10/hero-5g-advanced-solutions.webp');
+  opacity: 0.15;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.nokia-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 80%);
+}
+
+.nokia-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.nokia-hero-subtitle {
+  font-size: 1.3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.nokia-about {
+  padding: 70px 0;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.nokia-about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100%;
+  background-image: url('https://www.nokia.com/sites/default/files/styles/scale_1440_no_crop/public/2023-04/nokia-net-zero-carbon-footprint.webp');
+  opacity: 0.05;
+  background-size: cover;
+  background-position: center;
+}
+
+.nokia-about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.nokia-about h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #124191;
+  text-align: center;
+  position: relative;
+}
+
+.nokia-about h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #00a0e6;
+  margin: 15px auto 0;
+  border-radius: 3px;
+}
+
+.nokia-about-content p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.nokia-products {
+  padding: 80px 0;
+  background-color: white;
+  position: relative;
+}
+
+.nokia-products::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-image: linear-gradient(to top, rgba(249, 249, 249, 0.3), transparent);
+}
+
+.nokia-products h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #124191;
+  position: relative;
+}
+
+.nokia-products h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #00a0e6;
+  margin: 15px auto 0;
+  border-radius: 3px;
+}
+
+.nokia-product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.nokia-product-card {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-top: 4px solid transparent;
+  overflow: hidden;
+}
+
+.nokia-product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  border-top-color: #00a0e6;
+}
+
+.nokia-product-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-image: linear-gradient(180deg, rgba(0, 160, 230, 0.05) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nokia-product-card:hover::before {
+  opacity: 1;
+}
+
+.nokia-product-icon {
+  color: #00a0e6;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.nokia-product-card:hover .nokia-product-icon {
+  transform: scale(1.1);
+}
+
+.nokia-product-card h3 {
+  font-size: 1.4rem;
+  color: #124191;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+}
+
+.nokia-product-card:hover h3 {
+  color: #00a0e6;
+}
+
+.nokia-product-card p {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.nokia-product-card p:last-child {
+  margin-bottom: 0;
+}
+
+.nokia-why {
+  padding: 80px 0;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.nokia-why::before {
+  content: '';
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 300px;
+  height: 300px;
+  background-image: radial-gradient(circle, rgba(18, 65, 145, 0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.nokia-why h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #124191;
+  position: relative;
+}
+
+.nokia-why h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #00a0e6;
+  margin: 15px auto 0;
+  border-radius: 3px;
+}
+
+.nokia-why-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.nokia-why-content p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+  text-align: center;
+}
+
+.nokia-benefits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.nokia-benefit {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.nokia-benefit:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-left-color: #00a0e6;
+}
+
+.nokia-benefit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 50% 10%, rgba(0, 160, 230, 0.05) 0%, transparent 80%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.nokia-benefit:hover::before {
+  opacity: 1;
+}
+
+.nokia-benefit h3 {
+  font-size: 1.3rem;
+  color: #124191;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.nokia-benefit p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  position: relative;
+}
+
+.nokia-cta {
+  background-color: #124191;
+  background-image: linear-gradient(135deg, #124191 0%, #00a0e6 100%);
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.nokia-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://www.nokia.com/sites/default/files/styles/scale_1440_no_crop/public/2023-10/nokia-5g-advanced-orchestration.webp');
+  opacity: 0.1;
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px);
+}
+
+.nokia-cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.nokia-cta-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.nokia-tagline {
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+}
+
+.nokia-cta-button {
+  display: inline-block;
+  background-color: white;
+  color: #124191;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.nokia-cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 160, 230, 0.2);
+  transition: left 0.4s ease;
+}
+
+.nokia-cta-button:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-3px);
+}
+
+.nokia-cta-button:hover::before {
+  left: 0;
+}
+
+@media (max-width: 992px) {
+  .nokia-benefits {
+    grid-template-columns: 1fr;
   }
-  
-  .nokia-desktop-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nokia-nav-link {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .nokia-nav-link:hover {
-    color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .nokia-desktop-nav {
+    display: none;
   }
   
   .nokia-menu-button {
-    display: none;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .nokia-menu-text {
-    margin-right: 10px;
-  }
-  
-  .nokia-hamburger-icon {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .nokia-hamburger-line {
-    width: 25px;
-    height: 2px;
-    background-color: white;
-    border-radius: 2px;
-  }
-  
-  .nokia-mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #124191;
-    z-index: 1001;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-  
-  .nokia-mobile-menu.active {
-    transform: translateX(0);
-  }
-  
-  .nokia-menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-  }
-  
-  .nokia-close-button {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .nokia-close-text {
-    margin-right: 10px;
-  }
-  
-  .nokia-close-icon {
-    position: relative;
-    width: 20px;
-    height: 20px;
-  }
-  
-  .nokia-close-icon::before,
-  .nokia-close-icon::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    top: 50%;
-    left: 0;
-  }
-  
-  .nokia-close-icon::before {
-    transform: rotate(45deg);
-  }
-  
-  .nokia-close-icon::after {
-    transform: rotate(-45deg);
-  }
-  
-  .nokia-menu-nav {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .nokia-menu-item {
-    color: white;
-    text-decoration: none;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 1.2rem;
-  }
-  
-  .nokia-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 900;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  
-  .nokia-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .nokia-scroll-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #124191;
-    color: white;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, transform 0.3s;
-    z-index: 99;
-  }
-  
-  .nokia-scroll-top:hover {
-    background-color: #0f3679;
-    transform: translateY(-3px);
-  }
-  
-  .nokia-page {
-    padding-top: 80px;
-  }
-  
-  .nokia-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .nokia-hero {
-    background-color: #00a0e6;
-    background-image: linear-gradient(135deg, #00a0e6 0%, #124191 100%);
-    color: white;
-    padding: 80px 0;
-    text-align: center;
   }
   
   .nokia-hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 2rem;
   }
   
   .nokia-hero-subtitle {
-    font-size: 1.3rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-  
-  /* O společnosti */
-  .nokia-about {
-    padding: 70px 0;
-    background-color: #f9f9f9;
-  }
-  
-  .nokia-about-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .nokia-about-content h2 {
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    color: #124191;
-    text-align: center;
-  }
-  
-  .nokia-about-content p {
-    margin-bottom: 20px;
     font-size: 1.1rem;
-    line-height: 1.7;
-    color: #444;
   }
   
-  .nokia-products {
-    padding: 80px 0;
-    background-color: white;
-  }
-  
-  .nokia-products h2 {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-    color: #124191;
-  }
-  
-  .nokia-product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-  }
-  
-  .nokia-product-card {
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .nokia-product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  }
-  
-  .nokia-product-icon {
-    color: #00a0e6;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
+  .nokia-about-content h2,
+  .nokia-products h2,
+  .nokia-why h2 {
+    font-size: 1.8rem;
   }
   
   .nokia-product-card h3 {
-    font-size: 1.4rem;
-    color: #124191;
-    margin-bottom: 15px;
-  }
-  
-  .nokia-product-card p {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 15px;
-  }
-  
-  .nokia-product-card p:last-child {
-    margin-bottom: 0;
-  }
-  
-  .nokia-why {
-    padding: 80px 0;
-    background-color: #f9f9f9;
-  }
-  
-  .nokia-why h2 {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 30px;
-    color: #124191;
-  }
-  
-  .nokia-why-content {
-    max-width: 900px;
-    margin: 0 auto;
-  }
-  
-  .nokia-why-content p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #444;
-    text-align: center;
-  }
-  
-  .nokia-benefits {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-top: 40px;
-  }
-  
-  .nokia-benefit {
-    background-color: white;
-    border-radius: 10px;
-    padding: 25px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    text-align: center;
-  }
-  
-  .nokia-benefit h3 {
     font-size: 1.3rem;
-    color: #124191;
-    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .nokia-hero h1 {
+    font-size: 1.7rem;
   }
   
-  .nokia-benefit p {
-    margin: 0;
+  .nokia-hero-subtitle {
     font-size: 1rem;
-    line-height: 1.5;
-    color: #555;
   }
   
-  .nokia-cta {
-    background-color: #124191;
-    background-image: linear-gradient(135deg, #124191 0%, #00a0e6 100%);
-    color: white;
-    padding: 80px 0;
-    text-align: center;
+  .nokia-about-content h2,
+  .nokia-products h2,
+  .nokia-why h2 {
+    font-size: 1.5rem;
   }
   
-  .nokia-cta-content {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-  
-  .nokia-cta-content h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .nokia-tagline {
-    margin-bottom: 30px;
+  .nokia-product-card h3 {
     font-size: 1.2rem;
   }
   
-  .nokia-cta-button {
-    display: inline-block;
-    background-color: white;
-    color: #124191;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    text-decoration: none;
+  .nokia-cta-content h2 {
+    font-size: 1.6rem;
   }
-  
-  .nokia-cta-button:hover {
-    background-color: #f0f0f0;
-    transform: translateY(-3px);
-  }
-  
-  @media (max-width: 992px) {
-    .nokia-benefits {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .nokia-desktop-nav {
-      display: none;
-    }
-    
-    .nokia-menu-button {
-      display: flex;
-    }
-    
-    .nokia-hero h1 {
-      font-size: 2rem;
-    }
-    
-    .nokia-hero-subtitle {
-      font-size: 1.1rem;
-    }
-    
-    .nokia-about-content h2,
-    .nokia-products h2,
-    .nokia-why h2 {
-      font-size: 1.8rem;
-    }
-    
-    .nokia-product-card h3 {
-      font-size: 1.3rem;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .nokia-hero h1 {
-      font-size: 1.7rem;
-    }
-    
-    .nokia-hero-subtitle {
-      font-size: 1rem;
-    }
-    
-    .nokia-about-content h2,
-    .nokia-products h2,
-    .nokia-why h2 {
-      font-size: 1.5rem;
-    }
-    
-    .nokia-product-card h3 {
-      font-size: 1.2rem;
-    }
-    
-    .nokia-cta-content h2 {
-      font-size: 1.6rem;
-    }
-  }
+}

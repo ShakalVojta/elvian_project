@@ -1,534 +1,882 @@
 .tax-acc-header {
-    background-color: #2a3c73; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
+  background-color: #2a3c73; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.tax-acc-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0.8rem 2rem;
+}
+.flex-layout {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  gap: 10px;
+}
+
+.tax-acc-text,
+.tax-acc-image {
+  flex: 0 0 50%;
+  box-sizing: border-box;
+}
+
+.tax-acc-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 1125px) {
+  .flex-layout {
+    flex-direction: column;
+  }
+}
+@media (max-width: 820px) {
+  .tax-acc-image {
+    display: none;
   }
   
-  .tax-acc-header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0.8rem 2rem;
+}
+
+.tax-acc-logo img {
+  width: 160px;
+  height: auto;
+}
+
+.tax-acc-desktop-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.tax-acc-nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.tax-acc-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.tax-acc-nav-link:hover {
+  color: #f0f0f0;
+}
+
+.tax-acc-nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.tax-acc-menu-button {
+  display: none;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: opacity 0.2s ease;
+}
+
+.tax-acc-menu-button:hover {
+  opacity: 0.9;
+}
+
+.tax-acc-menu-text {
+  margin-right: 10px;
+}
+
+.tax-acc-hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.tax-acc-hamburger-line {
+  width: 25px;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+}
+
+.tax-acc-menu-button:hover .tax-acc-hamburger-line:nth-child(1) {
+  transform: scaleX(0.8);
+}
+
+.tax-acc-menu-button:hover .tax-acc-hamburger-line:nth-child(2) {
+  transform: scaleX(0.6);
+}
+
+.tax-acc-mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #2a3c73;
+  z-index: 1001;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.tax-acc-mobile-menu.active {
+  transform: translateX(0);
+}
+
+.tax-acc-menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.tax-acc-close-button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: opacity 0.2s ease;
+}
+
+.tax-acc-close-button:hover {
+  opacity: 0.9;
+}
+
+.tax-acc-close-text {
+  margin-right: 10px;
+}
+
+.tax-acc-close-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.tax-acc-close-icon::before,
+.tax-acc-close-icon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  top: 50%;
+  left: 0;
+  transition: background-color 0.3s ease;
+}
+
+.tax-acc-close-icon::before {
+  transform: rotate(45deg);
+}
+
+.tax-acc-close-icon::after {
+  transform: rotate(-45deg);
+}
+
+.tax-acc-close-button:hover .tax-acc-close-icon::before,
+.tax-acc-close-button:hover .tax-acc-close-icon::after {
+  background-color: #f0f0f0;
+}
+
+.tax-acc-menu-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.tax-acc-menu-item {
+  color: white;
+  text-decoration: none;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.2rem;
+  transition: padding-left 0.3s ease, color 0.3s ease;
+}
+
+.tax-acc-menu-item:hover {
+  padding-left: 10px;
+  color: #dae0f2;
+}
+
+.tax-acc-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.tax-acc-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tax-acc-scroll-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #5B6C9F;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s ease;
+  z-index: 99;
+}
+
+.tax-acc-scroll-top:hover {
+  background-color: #4a5b8e;
+  transform: translateY(-5px) rotate(360deg);
+  box-shadow: 0 8px 20px rgba(91, 108, 159, 0.4);
+}
+
+.tax-acc-page {
+  padding-top: 80px;
+}
+
+.tax-acc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.tax-acc-hero {
+  background-color: #3f4f85; 
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  background-image: linear-gradient(135deg, #3f4f85 0%, #5B6C9F 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.tax-acc-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://img.freepik.com/free-vector/abstract-financial-background-with-circuit-board-texture_1048-12526.jpg');
+  opacity: 0.07;
+  background-size: cover;
+  background-position: center;
+}
+
+.tax-acc-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background-image: radial-gradient(circle at 70% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+}
+
+.tax-acc-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.tax-acc-hero-subtitle {
+  font-size: 1.3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Úvodní sekce */
+.tax-acc-intro {
+  padding: 70px 0;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.tax-acc-intro::before {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 120px;
+  height: 120px;
+  background-color: rgba(91, 108, 159, 0.05);
+  border-radius: 50%;
+}
+
+.tax-acc-intro::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
+  background-color: rgba(91, 108, 159, 0.03);
+  border-radius: 50%;
+}
+
+.tax-acc-intro-content {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.tax-acc-intro-content p {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+.tax-acc-intro-content p strong {
+  color: #3f4f85;
+  font-weight: 600;
+}
+
+.tax-acc-services {
+  padding: 80px 0;
+  background-color: white;
+  position: relative;
+}
+
+.tax-acc-services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background-image: linear-gradient(to right, #3f4f85, #5B6C9F, #3f4f85);
+  opacity: 0.1;
+}
+
+.tax-acc-services h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #333;
+  position: relative;
+}
+
+.tax-acc-services h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #5B6C9F;
+  margin: 15px auto 0;
+  border-radius: 3px;
+}
+
+.tax-acc-service-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.tax-acc-service-box {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.tax-acc-service-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  border-bottom-color: #5B6C9F;
+}
+
+.tax-acc-service-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(90deg, transparent, #5B6C9F, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tax-acc-service-box:hover::before {
+  opacity: 1;
+}
+
+.tax-acc-service-box h3 {
+  font-size: 1.5rem;
+  color: #5B6C9F;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.tax-acc-service-box h3::before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  width: 20px;
+  height: 2px;
+  background-color: #5B6C9F;
+  opacity: 0;
+  transition: opacity 0.3s ease, left 0.3s ease;
+}
+
+.tax-acc-service-box:hover h3::before {
+  opacity: 1;
+  left: -15px;
+}
+
+.tax-acc-service-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.tax-acc-service-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: transform 0.3s ease;
+}
+
+.tax-acc-service-item:hover {
+  transform: translateX(5px);
+}
+
+.tax-acc-service-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #5B6C9F;
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.tax-acc-service-item:hover .tax-acc-service-bullet {
+  transform: scale(1.3);
+  background-color: #3f4f85;
+}
+
+.tax-acc-service-item p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+.tax-acc-how-it-works {
+  padding: 80px 0;
+  background-color: #f9f9f9;
+  position: relative;
+  overflow: hidden;
+}
+
+.tax-acc-how-it-works::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://img.freepik.com/free-vector/abstract-background-with-squares_23-2148995948.jpg');
+  opacity: 0.03;
+  background-size: cover;
+  background-position: center;
+}
+
+.tax-acc-how-it-works h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #333;
+  position: relative;
+  z-index: 1;
+}
+
+.tax-acc-how-it-works h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #5B6C9F;
+  margin: 15px auto 0;
+  border-radius: 3px;
+}
+
+.tax-acc-process {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.tax-acc-process-step {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.tax-acc-process-step:last-child {
+  margin-bottom: 0;
+}
+
+.tax-acc-process-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 25px;
+  width: 2px;
+  height: calc(100% + 20px);
+  background-color: #eaeaea;
+}
+
+.tax-acc-step-number {
+  width: 50px;
+  height: 50px;
+  background-color: #5B6C9F;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 25px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tax-acc-process-step:hover .tax-acc-step-number {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(91, 108, 159, 0.5);
+}
+
+.tax-acc-step-content {
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  flex-grow: 1;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tax-acc-process-step:hover .tax-acc-step-content {
+  transform: translateX(5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.tax-acc-step-content h3 {
+  font-size: 1.4rem;
+  color: #5B6C9F;
+  margin-bottom: 15px;
+}
+
+.tax-acc-step-content p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+}
+
+.tax-acc-why-us {
+  padding: 80px 0;
+  background-color: white;
+  position: relative;
+}
+
+.tax-acc-why-us::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background-image: linear-gradient(to top, rgba(249, 249, 249, 0.3), transparent);
+}
+
+.tax-acc-why-us h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  color: #333;
+  position: relative;
+}
+
+.tax-acc-why-us h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background-color: #5B6C9F;
+  margin: 15px auto 0;
+  border-radius: 3px;
+}
+
+.tax-acc-benefits {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.tax-acc-benefit {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tax-acc-benefit:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.tax-acc-benefit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle at 50% 0%, rgba(91, 108, 159, 0.03) 0%, transparent 70%);
+  border-radius: 8px;
+}
+
+.tax-acc-benefit-icon {
+  position: absolute;
+  top: -15px;
+  left: -10px;
+  background-color: #5B6C9F;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 2;
+}
+
+.tax-acc-benefit:hover .tax-acc-benefit-icon {
+  transform: scale(1.1) rotate(10deg);
+  background-color: #3f4f85;
+}
+
+.tax-acc-benefit h3 {
+  font-size: 1.3rem;
+  color: #5B6C9F;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.tax-acc-benefit p {
+  margin: 0;
+  color: #555;
+  line-height: 1.6;
+  position: relative;
+}
+
+.tax-acc-cta {
+  background-color: #5B6C9F;
+  color: white;
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tax-acc-cta::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://img.freepik.com/free-vector/abstract-technology-particle-background_52683-25766.jpg');
+  opacity: 0.05;
+  background-size: cover;
+  background-position: center;
+}
+
+.tax-acc-cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.tax-acc-cta-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.tax-acc-tagline {
+  margin-bottom: 30px;
+  font-size: 1.2rem;
+}
+
+.tax-acc-cta-button {
+  display: inline-block;
+  background-color: white;
+  color: #5B6C9F;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.tax-acc-cta-button:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tax-acc-cta-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.tax-acc-cta-button:hover::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 992px) {
+  .tax-acc-service-grid,
+  .tax-acc-benefits {
+    grid-template-columns: 1fr;
   }
-  
-  .tax-acc-logo img {
-    width: 160px;
-    height: auto;
-  }
-  
-  .tax-acc-desktop-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .tax-acc-nav-link {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .tax-acc-nav-link:hover {
-    color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+  .tax-acc-desktop-nav {
+    display: none;
   }
   
   .tax-acc-menu-button {
-    display: none;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .tax-acc-menu-text {
-    margin-right: 10px;
-  }
-  
-  .tax-acc-hamburger-icon {
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  
-  .tax-acc-hamburger-line {
-    width: 25px;
-    height: 2px;
-    background-color: white;
-    border-radius: 2px;
-  }
-  
-  .tax-acc-mobile-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #2a3c73;
-    z-index: 1001;
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-  }
-  
-  .tax-acc-mobile-menu.active {
-    transform: translateX(0);
-  }
-  
-  .tax-acc-menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-  }
-  
-  .tax-acc-close-button {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .tax-acc-close-text {
-    margin-right: 10px;
-  }
-  
-  .tax-acc-close-icon {
-    position: relative;
-    width: 20px;
-    height: 20px;
-  }
-  
-  .tax-acc-close-icon::before,
-  .tax-acc-close-icon::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: white;
-    top: 50%;
-    left: 0;
-  }
-  
-  .tax-acc-close-icon::before {
-    transform: rotate(45deg);
-  }
-  
-  .tax-acc-close-icon::after {
-    transform: rotate(-45deg);
-  }
-  
-  .tax-acc-menu-nav {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .tax-acc-menu-item {
-    color: white;
-    text-decoration: none;
-    padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 1.2rem;
-  }
-  
-  .tax-acc-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 900;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  
-  .tax-acc-overlay.active {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .tax-acc-scroll-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #5B6C9F;
-    color: white;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s, transform 0.3s;
-    z-index: 99;
-  }
-  
-  .tax-acc-scroll-top:hover {
-    background-color: #4a5b8e;
-    transform: translateY(-3px);
-  }
-  
-  .tax-acc-page {
-    padding-top: 80px;
-  }
-  
-  .tax-acc-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .tax-acc-hero {
-    background-color: #3f4f85; 
-    color: white;
-    padding: 80px 0;
-    text-align: center;
   }
   
   .tax-acc-hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    max-width: 900px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 2rem;
   }
   
   .tax-acc-hero-subtitle {
-    font-size: 1.3rem;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-  
-  /* Úvodní sekce */
-  .tax-acc-intro {
-    padding: 70px 0;
-    background-color: #f9f9f9;
-  }
-  
-  .tax-acc-intro-content {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .tax-acc-intro-content p {
-    margin-bottom: 20px;
     font-size: 1.1rem;
-    line-height: 1.7;
-    color: #444;
   }
   
-  .tax-acc-services {
-    padding: 80px 0;
-    background-color: white;
-  }
-  
-  .tax-acc-services h2 {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-    color: #333;
-  }
-  
-  .tax-acc-service-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
-  
-  .tax-acc-service-box {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  .tax-acc-services h2,
+  .tax-acc-how-it-works h2,
+  .tax-acc-why-us h2 {
+    font-size: 1.8rem;
   }
   
   .tax-acc-service-box h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .tax-acc-hero h1 {
+    font-size: 1.7rem;
+  }
+  
+  .tax-acc-hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .tax-acc-services h2,
+  .tax-acc-how-it-works h2,
+  .tax-acc-why-us h2 {
     font-size: 1.5rem;
-    color: #5B6C9F;
-    margin-bottom: 20px;
   }
   
-  .tax-acc-service-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  
-  .tax-acc-service-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
-  
-  .tax-acc-service-bullet {
-    width: 8px;
-    height: 8px;
-    background-color: #5B6C9F;
-    border-radius: 50%;
-    margin-top: 8px;
-    flex-shrink: 0;
-  }
-  
-  .tax-acc-service-item p {
-    margin: 0;
-    color: #555;
-    line-height: 1.5;
-  }
-  
-  .tax-acc-how-it-works {
-    padding: 80px 0;
-    background-color: #f9f9f9;
-  }
-  
-  .tax-acc-how-it-works h2 {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-    color: #333;
-  }
-  
-  .tax-acc-process {
-    max-width: 900px;
-    margin: 0 auto;
+  .tax-acc-service-box h3 {
+    font-size: 1.2rem;
   }
   
   .tax-acc-process-step {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 40px;
-    position: relative;
-  }
-  
-  .tax-acc-process-step:last-child {
-    margin-bottom: 0;
-  }
-  
-  .tax-acc-process-step:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    top: 50px;
-    left: 25px;
-    width: 2px;
-    height: calc(100% + 20px);
-    background-color: #eaeaea;
+    flex-direction: column;
   }
   
   .tax-acc-step-number {
-    width: 50px;
-    height: 50px;
-    background-color: #5B6C9F;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-right: 25px;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .tax-acc-step-content {
-    background-color: white;
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    flex-grow: 1;
-  }
-  
-  .tax-acc-step-content h3 {
-    font-size: 1.4rem;
-    color: #5B6C9F;
     margin-bottom: 15px;
+    margin-right: 0;
   }
   
-  .tax-acc-step-content p {
-    margin: 0;
-    color: #555;
-    line-height: 1.6;
+  .tax-acc-process-step:not(:last-child)::after {
+    display: none;
   }
-  
-  .tax-acc-why-us {
-    padding: 80px 0;
-    background-color: white;
-  }
-  
-  .tax-acc-why-us h2 {
-    text-align: center;
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-    color: #333;
-  }
-  
-  .tax-acc-benefits {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-  }
-  
-  .tax-acc-benefit {
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    padding: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    position: relative;
-  }
-  
-  .tax-acc-benefit-icon {
-    position: absolute;
-    top: -15px;
-    left: -10px;
-    background-color: #5B6C9F;
-    color: white;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    font-weight: bold;
-  }
-  
-  .tax-acc-benefit h3 {
-    font-size: 1.3rem;
-    color: #5B6C9F;
-    margin-bottom: 15px;
-  }
-  
-  .tax-acc-benefit p {
-    margin: 0;
-    color: #555;
-    line-height: 1.6;
-  }
-  
-  .tax-acc-cta {
-    background-color: #5B6C9F;
-    color: white;
-    padding: 80px 0;
-    text-align: center;
-  }
-  
-  .tax-acc-cta-content {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-  
-  .tax-acc-cta-content h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .tax-acc-tagline {
-    margin-bottom: 30px;
-    font-size: 1.2rem;
-  }
-  
-  .tax-acc-cta-button {
-    display: inline-block;
-    background-color: white;
-    color: #5B6C9F;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    text-decoration: none;
-  }
-  
-  .tax-acc-cta-button:hover {
-    background-color: #f0f0f0;
-    transform: translateY(-3px);
-  }
-  
-  @media (max-width: 992px) {
-    .tax-acc-service-grid,
-    .tax-acc-benefits {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .tax-acc-desktop-nav {
-      display: none;
-    }
-    
-    .tax-acc-menu-button {
-      display: flex;
-    }
-    
-    .tax-acc-hero h1 {
-      font-size: 2rem;
-    }
-    
-    .tax-acc-hero-subtitle {
-      font-size: 1.1rem;
-    }
-    
-    .tax-acc-services h2,
-    .tax-acc-how-it-works h2,
-    .tax-acc-why-us h2 {
-      font-size: 1.8rem;
-    }
-    
-    .tax-acc-service-box h3 {
-      font-size: 1.3rem;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .tax-acc-hero h1 {
-      font-size: 1.7rem;
-    }
-    
-    .tax-acc-hero-subtitle {
-      font-size: 1rem;
-    }
-    
-    .tax-acc-services h2,
-    .tax-acc-how-it-works h2,
-    .tax-acc-why-us h2 {
-      font-size: 1.5rem;
-    }
-    
-    .tax-acc-service-box h3 {
-      font-size: 1.2rem;
-    }
-    
-    .tax-acc-process-step {
-      flex-direction: column;
-    }
-    
-    .tax-acc-step-number {
-      margin-bottom: 15px;
-      margin-right: 0;
-    }
-    
-    .tax-acc-process-step:not(:last-child)::after {
-      display: none;
-    }
-  }
+}

@@ -19,21 +19,29 @@ const WorkFlow = () => {
       ],
       link: "https://qubefy.com/?lang=cs",
       externalLink: true,
+      sectionId: "monetization"
     },
     {
       id: 2,
       name: "Outsourcing mzdového účetnictví",
-      subtitle: "Komplexní zpracování mezd a personalistiky",
+      subtitle: "Zjednodušte si zpracování mezd a personální agendy – s námi bez starostí!",
       description:
-        "Převezmeme kompletní odpovědnost za mzdovou agendu vaší firmy, ušetříme vám čas i náklady.",
+        "Hledáte spolehlivé řešení pro výpočet mezd a personální administrativu? Outsourcing mzdové a personální agendy vám ušetří čas, sníží náklady a eliminuje rizika chyb či legislativních nesrovnalostí.",
       features: [
-        "Kompletní výpočet a zpracování mezd",
-        "Generování výplatních pásek a hlášení institucím",
-        "Komunikaci s úřady včetně zastupování při kontrolách",
-        "Online reporting a nepřetržitý přístup k datům",
+        "Bezpečnost a přesnost – dodržujeme veškeré legislativní změny.",
+        "Úspora času a nákladů – žádné investice do školení či softwaru.",
+        "Individuální přístup – služby šité na míru vaší firmě.",
+        "Žádné starosti se zabezpečením – my máme vše pod kontrolou",
+        "Není nutné řešit GDPR",
+        "Žádné starosti s výpočetní technikou a kancelářemi",
+        "Zajištění větší diskrétnosti výplat – my to nikomu neřekneme",
+        "Zpracované dokumenty vždy včas a správně",
+        "Zajištěn Service Desk a IT podpora",
+        "Vše elektronicky a inovativně – ve 21. století je \"tužka a papír\" riskantní"
       ],
       link: "/tax-accounting",
       externalLink: false,
+      sectionId: "payroll"
     },
     {
       id: 3,
@@ -50,6 +58,7 @@ const WorkFlow = () => {
       link: "/about-nokia",
       externalLink: false,
       linkText: "více o Nokia produktech",
+      sectionId: "network"
     },
     {
       id: 4,
@@ -65,6 +74,7 @@ const WorkFlow = () => {
         "Demografické analýzy",
         "Víceúrovňové zabezpečení",
       ],
+      sectionId: "biometrics"
     },
     {
       id: 5,
@@ -79,6 +89,7 @@ const WorkFlow = () => {
         "Návrh stromu služeb",
         "ITIL v3",
       ],
+      sectionId: "itservice"
     },
     {
       id: 6,
@@ -93,8 +104,30 @@ const WorkFlow = () => {
         "Dodávky hardware a software",
         "Vývoj aplikací na míru",
       ],
+      sectionId: "itoutsourcing"
     },
   ];
+  const scrollToSection = (sectionId, offset = 100) => {
+    setTimeout(() => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }, 100);
+  };
+
+  React.useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+      scrollToSection(id);
+    }
+  }, []);
 
   return (
     <section className="workflow-section" id="workflow">
@@ -103,6 +136,7 @@ const WorkFlow = () => {
         <div className="product-grid">
           {products.map((product) => (
             <div key={product.id} className="product-card">
+              <div id={product.sectionId} className="product-scroll-anchor"></div>
               <div className="product-header">
                 <h3 className="product-name">{product.name}</h3>
                 <p className="product-subtitle">{product.subtitle}</p>
@@ -122,6 +156,7 @@ const WorkFlow = () => {
                 {product.link && (
                   <div className="product-link">
                     {product.externalLink ? (
+                      
                       <a
                         href={product.link}
                         target="_blank"

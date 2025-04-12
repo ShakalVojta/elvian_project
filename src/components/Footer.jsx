@@ -19,6 +19,10 @@ const Footer = () => {
                 <a href="mailto:info@elvian.cz" className="contact-value">info@elvian.cz</a>
               </div>
               <div className="footer-contact-item">
+                <span className="contact-label">Telefon</span>
+                <a href="tel:731462048" className="contact-value">731 462 048</a>
+              </div>
+              <div className="footer-contact-item">
                 <span className="contact-label">Datová schránka</span>
                 <span className="contact-value">v27v499</span>
               </div>
