@@ -127,7 +127,7 @@ const Header = () => {
               <span className="chevron-line"></span>
             </div>
           </a>
-          <a href="#kontakt" className="menu-item" onClick={(e) => scrollToSection('kontakt', e)}>
+          <a href="#contact" className="menu-item" onClick={(e) => scrollToSection('contact', e)}>
             Kontakt
           </a>
         </nav>

@@ -12,7 +12,7 @@ const Services = () => {
   const services = [
     {
       id: 5,
-      title: "Mzdová agenda",
+      title: "Mzdová a personální agenda",
       description: "Poskytujeme kompletní outsourcing a automatizaci mzdového účetnictví. S našimi chytrými řešeními šetříte čas, náklady a eliminujete chyby.",
       image: Consultancy,
       link: "#workflow",

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Logo from '../assets/logo/logo_elvian.png';
 import { Icon } from '@mdi/react';
-import { mdiArrowUp, mdiCellphoneLink, mdiNetworkOutline, mdiServerNetwork, mdiSwapHorizontal, mdiDatabase } from '@mdi/js';
+import { mdiArrowUp, mdiCellphoneLink, mdiNetworkOutline, mdiServerNetwork, mdiSwapHorizontal, mdiDatabase, mdiAntenna } from '@mdi/js';
 import '../styles/pages/NokiaPage.css';
 import imageSrc from '../assets/nokia-page/nokia-page.webp';
 
@@ -200,6 +200,15 @@ const NokiaPage = () => {
                 <h3>Datacentrová řešení</h3>
                 <p>Nokia nabízí pokročilá datacentrová řešení, která podporují umělou inteligenci, cloudové služby a masivní datové toky. Její datové switche a optické propojení zajišťují vysokou hustotu, nízkou latenci a spolehlivost.</p>
                 <p>Tyto systémy jsou navrženy pro moderní podniky, které chtějí využít potenciál AI a škálovat svou infrastrukturu od okraje sítě až po cloud.</p>
+              </div>
+              
+              <div className="nokia-product-card">
+                <div className="nokia-product-icon">
+                  <Icon path={mdiAntenna} size={2} />
+                </div>
+                <h3>Mikrovlnné spoje</h3>
+                <p>Mikrovlnné spoje od Nokie představují efektivní řešení pro bezdrátový přenos dat na krátké i dlouhé vzdálenosti. Tyto systémy se využívají tam, kde není možné nebo praktické použít optická vlákna, například v odlehlých oblastech nebo pro rychlé nasazení sítí.</p>
+                <p>Nokia nabízí špičkové mikrovlnné technologie s vysokou kapacitou a spolehlivostí, které podporují 5G backhaul, podnikové sítě i kritickou infrastrukturu. Díky odolnosti vůči povětrnostním podmínkám a energetické efektivitě jsou ideální pro flexibilní a rychlé rozšíření konektivity.</p>
               </div>
             </div>
           </div>
